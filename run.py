@@ -13,7 +13,17 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Quiz Lord Of The Rings')
 
-results = SHEET.worksheet("results")
-data = results.get_all_values()
 
-print(data)
+
+
+
+def get_names_from_players():
+    """
+    This function will store the players name in
+    the worksheet
+    """
+    enter_name = input("enter your name")
+    print(f"{enter_name}")
+
+get_names_from_players()
+
