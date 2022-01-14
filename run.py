@@ -54,9 +54,29 @@ def update_names_worksheet(data):
     update_names.append_row(data)
     print("funker")
 
+class Game:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
 
+questions = [
+    "who is Frodo`s loyal friend that walked into the Mount Doom?\n(a) Gandalf\n(b) Samwise Gamgee\n(c)Aragorn\n\n"
+    ]
 
-data = get_players_names()
-results_info = [str(elem) for elem in data]
+answers = [
+    Game(questions[0],"b")
+    ]
 
-update_names_worksheet(results_info)
+def run_game(questions):
+    score = 0
+    for question in questions:
+        answer = input(question)
+        print("hei")
+
+run_game(questions)
+
+#data = get_players_names()
+#results_info = [str(elem) for elem in data]
+
+#update_names_worksheet(results_info)
+
