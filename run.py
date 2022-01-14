@@ -21,19 +21,31 @@ def get_players_names():
     This function will store the players name in
     the worksheet
     """
-    enter_name = input("enter your name:\n")
-    results_info = enter_name.split(",")
-    validate_name(results_info)
+    while True:
+        enter_name = input("enter your name:\n")
+        results_info = enter_name.split(",")
+        if validate_name(results_info):
+            print("successful")
+            break
+        
 
+    
 
 def validate_name(values):
     """
-    jjj
+    This function will raise valueerror if
+    there are written more names then one
     """
     try:
         if len(values) != 1:
-            raise ValueError(f"Only one name is permitted, you wrote {len(values)}")
+            raise ValueError(f"only one value is permitted, you wrote{len(values)}")
     except ValueError as e:
-        print(f"invalid data {e} please try again")
-    
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
+
+
+
+
 get_players_names()
