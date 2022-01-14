@@ -27,9 +27,9 @@ def get_players_names():
         if validate_name(results_info):
             print("successful")
             break
-        
 
-    
+    return results_info
+        
 
 def validate_name(values):
     """
@@ -45,7 +45,18 @@ def validate_name(values):
 
     return True
 
+def update_names_worksheet(data):
+    """
+    Updating players name in the worksheet
+    """
+    print("updating")
+    update_names = SHEET.worksheet("results")
+    update_names.append_row(data)
+    print("funker")
 
 
 
-get_players_names()
+data = get_players_names()
+results_info = [str(elem) for elem in data]
+
+update_names_worksheet(results_info)
