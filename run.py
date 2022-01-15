@@ -61,7 +61,7 @@ class Game:
         self.answer = answer
 
 game_quiz = [
-    "Who is Frodo`s loyal friend that walked with him to Mount doom?\n(a) Gandalf\n(b) Samwise Gamgee\n(c) Aragon\n\n",
+    "Who is Frodo`s loyal friend that walked with him to Mount doom?\n(a) Gandalf\n(b) Samwise Gamgee\n(c) Aragorn\n\n",
      "How many rings were made for the elves?\n(a) 2\n(b) 4\n(c) 3\n\n",
     ]
 questions = [
@@ -69,54 +69,65 @@ questions = [
     Game(game_quiz[1],"c"),
 ]
 
+
+
 def run_game(questions):
     
+    
     for question in questions:
+        
         
         while True:
             response = input(question.grill)
             try:
                 if response not in ("a", "b", "c"):
                     raise ValueError(f"only a, b or c permitted, you wrote{response}")
+                elif response == question.answer:
+                    update_score()
+                    print(score)
+                    print("hurra")
+                    break
                 else:
-                    if response == question.answer:
-                        print("hurra")
-                        score = 0
-                        update_score()
-                        break
-
-                    else:
-                        print("Feil svar")
-                        break
+                    print("Feil svar")
+                    print(score)
+                    
+                    break
+                
             except ValueError as e:
                 print(f"Invalid data: {e}, please try again.\n")
     
-"""
+
 score = 0
+
 def update_score():
     global score
     score += 1
-    print(score)
-    print("hit")
     
-    convert = str(score)
-    return convert
+    print("hit")
+    print(type(score))
+    
+print(score)
+    
 
-convert = "hei"
 
-def update_score_worksheet(convert):
+"""
+def update_score_worksheet():
+    [int(score)]
+    print(score)
+    print("bbbb")
     update_points = SHEET.worksheet("results")
-    update_points.append_row(convert)
+    update_points.append_row(score)
     print("dit")
-
-
-
-convert= update_score_worksheet()
 """
 
+
     
 
 
+
+
+
+#convert= update_score_worksheet()
 
 
 print("********************************")
@@ -127,5 +138,8 @@ data = get_players_names()
 results_info = [str(elem) for elem in data]
 
 update_names_worksheet(results_info)
+print(type(results_info))
+print(results_info)
 
 run_game(questions)
+update_score()
