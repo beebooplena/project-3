@@ -73,15 +73,17 @@ def run_game(questions):
         response = input(question.grill)
         validate_response(response)
     return response
-    
-        
-def validate_response(reply):
-    print("llll")
-    
 
+def validate_response(reply):
+    try:
+        if ("a" or "b" or "c") not in reply:
+            raise ValueError(f"You can only choose a,b or c.You wrote {reply}")
+    except ValueError as e:
+        print(f"Invalid data: {e} please try again")
 
 
 run_game(questions)
+    
 
 
 
@@ -92,4 +94,3 @@ run_game(questions)
 #results_info = [str(elem) for elem in data]
 
 #update_names_worksheet(results_info)
-
