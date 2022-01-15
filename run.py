@@ -70,7 +70,7 @@ questions = [
 ]
 
 def run_game(questions):
-    poeng = 0  
+    
     for question in questions:
         
         while True:
@@ -81,54 +81,51 @@ def run_game(questions):
                 else:
                     if response == question.answer:
                         print("hurra")
-                        poeng += 1
+                        score = 0
+                        update_score()
                         break
+
                     else:
                         print("Feil svar")
                         break
             except ValueError as e:
                 print(f"Invalid data: {e}, please try again.\n")
-    print(poeng)
-         
+    
+"""
+score = 0
+def update_score():
+    global score
+    score += 1
+    print(score)
+    print("hit")
+    
+    convert = str(score)
+    return convert
 
-        
-"""        
-def validate_response(reply):
-    try:
-        if reply in ("a", "b", "c"):
-            return True
-    except ValueError as e:
-        print(f"invalid data:{e} try again")
-        raise ValueError(f"shit")
-        return False
-"""      
-        
-            
-            
-        
+convert = "hei"
+
+def update_score_worksheet(convert):
+    update_points = SHEET.worksheet("results")
+    update_points.append_row(convert)
+    print("dit")
 
 
 
-        
-
+convert= update_score_worksheet()
+"""
 
     
-    
-         
 
 
-        
 
+
+print("********************************")
+print("*    LORD OF THE RINGS QUIZ    *")
+print("*                              *")
+print("********************************")
+data = get_players_names()
+results_info = [str(elem) for elem in data]
+
+update_names_worksheet(results_info)
 
 run_game(questions)
-    
-
-
-
-
-
-
-#data = get_players_names()
-#results_info = [str(elem) for elem in data]
-
-#update_names_worksheet(results_info)
