@@ -45,6 +45,7 @@ def validate_name(values):
 
     return True
 
+
 def update_names_worksheet(data):
     """
     Updating players name in the worksheet
@@ -69,17 +70,54 @@ questions = [
 ]
 
 def run_game(questions):
+    poeng = 0  
     for question in questions:
-        response = input(question.grill)
-        validate_response(response)
-    return response
+        
+        while True:
+            response = input(question.grill)
+            try:
+                if response not in ("a", "b", "c"):
+                    raise ValueError(f"only a, b or c permitted, you wrote{response}")
+                else:
+                    if response == question.answer:
+                        print("hurra")
+                        poeng += 1
+                        break
+                    else:
+                        print("Feil svar")
+                        break
+            except ValueError as e:
+                print(f"Invalid data: {e}, please try again.\n")
+    print(poeng)
+         
 
+        
+"""        
 def validate_response(reply):
     try:
-        if ("a" or "b" or "c") not in reply:
-            raise ValueError(f"You can only choose a,b or c.You wrote {reply}")
+        if reply in ("a", "b", "c"):
+            return True
     except ValueError as e:
-        print(f"Invalid data: {e} please try again")
+        print(f"invalid data:{e} try again")
+        raise ValueError(f"shit")
+        return False
+"""      
+        
+            
+            
+        
+
+
+
+        
+
+
+    
+    
+         
+
+
+        
 
 
 run_game(questions)
