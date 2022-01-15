@@ -102,44 +102,33 @@ score = 0
 def update_score():
     global score
     score += 1
+   
     
-    print("hit")
-    print(type(score))
-    
-print(score)
-    
-
-
-"""
-def update_score_worksheet():
-    [int(score)]
-    print(score)
-    print("bbbb")
+def update_score_worksheet(score):
+    total = [str(score)]
+    print(total)
     update_points = SHEET.worksheet("results")
-    update_points.append_row(score)
-    print("dit")
-"""
-
-
+    update_points.append_row[2](total)
+    print("du klarte det")
     
 
 
 
+def main():
+    print("********************************")
+    print("*    LORD OF THE RINGS QUIZ    *")
+    print("*                              *")
+    print("********************************")
+    data = get_players_names()
+    results_info = [str(elem) for elem in data]
+
+    update_names_worksheet(results_info)
+    print(type(results_info))
+    print(results_info)
+
+    run_game(questions)
+    update_score()
+    update_score_worksheet(score)
 
 
-#convert= update_score_worksheet()
-
-
-print("********************************")
-print("*    LORD OF THE RINGS QUIZ    *")
-print("*                              *")
-print("********************************")
-data = get_players_names()
-results_info = [str(elem) for elem in data]
-
-update_names_worksheet(results_info)
-print(type(results_info))
-print(results_info)
-
-run_game(questions)
-update_score()
+main()
