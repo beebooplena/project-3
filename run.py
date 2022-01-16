@@ -126,7 +126,8 @@ def update_score():
     global score
     score += 1
     return score
-   
+
+
 def update_score_worksheet(score):
     """
     This function will store the players
@@ -137,6 +138,16 @@ def update_score_worksheet(score):
     update_points.append_row(total)
     update_names.append_row(data)
     print(column)
+    
+
+
+def showing_spreadsheet():
+    show = SHEET.worksheet("results").get_all_values()
+    print(f"{results_info} Thank you for playing the Lord Of The Rings quiz. Your score is: {total}")
+    print(show)
+   
+
+
 
 def main():
     """
@@ -155,7 +166,8 @@ def main():
     print(results_info)
     run_game(questions)
     update_score()
-    update_score_worksheet(score)
+    
+    showing_spreadsheet()
 
 
 main()
