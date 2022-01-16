@@ -6,6 +6,7 @@ APi and google drive API
 import gspread
 from google.oauth2.service_account import Credentials
 import random
+ 
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -54,7 +55,7 @@ def update_names_worksheet(data):
     print("updating")
     update_names = SHEET.worksheet("results")
     update_names.append_row(data)
-   
+
 
 """
 I got inspired after watching a video,
@@ -153,10 +154,12 @@ def update_score():
 
 def thank_player(player_name):
     show = SHEET.worksheet("results").get_all_values()
+    print("Thank you", player_name, "you got:", score, "points")
     for row in show:
-        print(row)
         print("This is the scorelist of all players")
-        print("Thank you", player_name, "you got:", score, "points")
+        print(row)
+        
+        
 
    
 def main():
