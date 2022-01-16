@@ -30,19 +30,19 @@ def get_players_names():
         print("Welcome!\n")
         name = input("Enter your name:\n")
         try:
-            if name.isdigit() == True:
+            if name.isdigit():
                 raise ValueError(f"No numbers permitted, you wrote: {name}")
             elif len(name) >= 20:
                 raise ValueError(f"Your name was over 20 caracters: {name}")
             elif name == "":
                 raise ValueError("You left name empty")
-               
-            else: break
+            else:
+                break
         except ValueError as e:
             print(f"Invalid data:{e}, please try again.\n")
     return name
-  
-        
+
+
 def update_names_worksheet(data):
     """
     This function will store the names
@@ -57,11 +57,12 @@ def update_names_worksheet(data):
 
 """
 I got inspired after watching a video,
-  where somebody made a quiz using a 
-  class in python. I used this idea.
-  The link will take you to the youtube
-  video:https://youtu.be/SgQhwtIoQ7o
+where somebody made a quiz using a
+class in python. I used this idea.
+The link will take you to the youtube
+video:https://youtu.be/SgQhwtIoQ7o
 """
+
 
 class Game:
     def __init__(self, grill, answer):
@@ -70,42 +71,51 @@ class Game:
 
 
 game_quiz = [
-    "\nWho is Frodo`s loyal friend that walked with him to Mount doom?\n(a) Gandalf\n(b) Samwise Gamgee\n(c) Aragorn\n\n",
+    "\nWho is Frodo`s loyal friend that walked with him to Mount doom?"
+    "\n(a) Gandalf\n(b) Samwise Gamgee\n(c) Aragorn\n\n",
     "How many rings were made for the elves?\n(a) 2\n(b) 4\n(c) 3\n\n",
-    "Who released King Theoden from the spell of Saruman?\n(a) Elves\n(b) Gandalf\n(c) Frodo\n\n",
-    "Name Sauron's fortress in Mordor\n(a) Barad-dûr\n(b) Barad-kar\n(c) Barad-mov\n\n",
-    "What was the riddle that Gandalf could not figure out to open the door?\n(a) speak in tongues\n(b) speak wise and enter\n"
+    "Who released King Theoden from the spell of Saruman?\n(a) Elves\n(b)"
+    " Gandalf\n(c) Frodo\n\n",
+    "Name Sauron's fortress in Mordor\n(a) Barad-dûr\n(b) Barad-kar\n(c)"
+    "Barad-mov\n\n",
+    "What was the riddle that Gandalf could not figure out to open the door?"
+    "\n(a) speak in tongues\n(b) speak wise and enter\n"
     "(c) speak friend and enter\n\n",
-    " What are the names of the two towers?\n(a) Minas Tirith and Minas Morgul\n(b) Minas Tirith and Minas Morkul"
+    "What are the names of the two towers?\n(a) Minas Tirith and Minas Morgul"
+    "\n(b) Minas Tirith and Minas Morkul"
     "\n(c) Minas Trith and Minas Morgul\n\n",
-    "Name Lady of Caras Galadhon.\n(a) Lady love\n(b) Lady of Caras Galadhon.\n(c) Lady of sath Toth\n\n",
+    "Name Lady of Caras Galadhon.\n(a) Lady love\n(b) Lady of Caras Galadhon"
+    "\n(c) Lady of sath Toth\n\n",
     "Who is Isildur's heir?\n(a) Legolas\n(b) Boromir\n(c) Aragorn\n\n",
-    "Who did Sam eventually marry?\n(a) Rosie Cotton\n(b) Sally Rose\n(c) Mary Cotton\n\n",
-    "What is Bilbo's relation to Frodo?\na(a)  Frodo is Bilbo's second cousin\n"
-    "(b)  Frodo is Bilbo's third cousin\n(c)  Frodo is Bilbo's fourth cousin\n\n",
+    "Who did Sam eventually marry?\n(a) Rosie Cotton\n(b) Sally Rose\n(c)"
+    " Mary Cotton\n\n",
+    "What is Bilbo's relation to Frodo?\n(a)"
+    "  Frodo is Bilbo's second cousin\n"
+    "(b)  Frodo is Bilbo's third cousin\n(c)  "
+    "Frodo is Bilbo's fourth cousin\n\n",
 
 
     ]
 questions = [
-    Game(game_quiz[0],"b"),
-    Game(game_quiz[1],"c"),
-    Game(game_quiz[2],"b"),
-    Game(game_quiz[3],"a"),
-    Game(game_quiz[4],"c"),
-    Game(game_quiz[5],"a"),
-    Game(game_quiz[6],"b"),
-    Game(game_quiz[7],"c"),
-    Game(game_quiz[8],"a"),
-    Game(game_quiz[9],"a"),
-
+    Game(game_quiz[0], "b"),
+    Game(game_quiz[1], "c"),
+    Game(game_quiz[2], "b"),
+    Game(game_quiz[3], "a"),
+    Game(game_quiz[4], "c"),
+    Game(game_quiz[5], "a"),
+    Game(game_quiz[6], "b"),
+    Game(game_quiz[7], "c"),
+    Game(game_quiz[8], "a"),
+    Game(game_quiz[9], "a"),
 ]
+
 
 def run_game(questions):
     """
     This function will run the quiz.
-    It will raise a valueerror if 
-    a, b, or c is not clicked.
-    Then you can try again by using
+    It will raise a valueerror if a,
+    b, or c is not clicked.Then you
+    can try again by using
     while True. It also checks if the answers
     are correct.
     """
@@ -114,7 +124,7 @@ def run_game(questions):
             response = input(question.grill)
             try:
                 if response not in ("a", "b", "c"):
-                    raise ValueError(f"only a, b or c permitted, you wrote:{response}")
+                    raise ValueError(f"only a, b or c permitted,you wrote:{response}")
                 elif response == question.answer:
                     update_score()
                     break
@@ -125,6 +135,8 @@ def run_game(questions):
     
 
 score = 0
+
+
 def update_score():
     """
     This function will increment
@@ -136,12 +148,13 @@ def update_score():
 
 
 def thank_player():
-    print("Thank you", playerName, "for taking the quiz, you got:", score, "points")
-    print("This is the scorelist of all players:")
     show = SHEET.worksheet("results").get_all_values()
     for row in show:
         print(row)
+        print("This is the scorelist of all players")
+        print("Thank you", playerName, "you got:", score, "points")
 
+    
 def main():
     """
     This is the main function and it
@@ -152,7 +165,6 @@ def main():
     print("*    LORD OF THE RINGS QUIZ    *")
     print("*                              *")
     print("********************************\n")
-    
     global playerName
     playerName = get_players_names()
     run_game(questions)
@@ -160,6 +172,8 @@ def main():
     results_info = [str(elem) for elem in data]
     update_names_worksheet(results_info)
     thank_player()
- 
-    
+
 main()
+
+
+
