@@ -5,6 +5,7 @@ APi and google drive API
 """
 import gspread
 from google.oauth2.service_account import Credentials
+import random
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -38,8 +39,8 @@ def get_players_names():
                 raise ValueError("You left name empty")
             else:
                 break
-        except ValueError as e:
-            print(f"Invalid data:{e}, please try again.\n")
+        except ValueError as error:
+            print(f"Invalid data:{error}, please try again.\n")
     return name
 
 
@@ -53,7 +54,7 @@ def update_names_worksheet(data):
     print("updating")
     update_names = SHEET.worksheet("results")
     update_names.append_row(data)
-    
+   
 
 """
 I got inspired after watching a video,
@@ -120,11 +121,14 @@ def run_game(questions):
     are correct.
     """
     for question in questions:
+        random.shuffle(questions)
+        
         while True:
             response = input(question.grill)
             try:
                 if response not in ("a", "b", "c"):
-                    raise ValueError(f"only a, b or c permitted,you wrote:{response}")
+                    raise ValueError(
+                        f"only a, b or c permitted,you wrote:{response}")
                 elif response == question.answer:
                     update_score()
                     break
@@ -132,7 +136,7 @@ def run_game(questions):
                     break
             except ValueError as e:
                 print(f"Invalid data: {e}, please try again.\n")
-    
+
 
 score = 0
 
@@ -147,14 +151,14 @@ def update_score():
     return score
 
 
-def thank_player():
+def thank_player(player_name):
     show = SHEET.worksheet("results").get_all_values()
     for row in show:
         print(row)
         print("This is the scorelist of all players")
-        print("Thank you", playerName, "you got:", score, "points")
+        print("Thank you", player_name, "you got:", score, "points")
 
-    
+   
 def main():
     """
     This is the main function and it
@@ -165,15 +169,14 @@ def main():
     print("*    LORD OF THE RINGS QUIZ    *")
     print("*                              *")
     print("********************************\n")
-    global playerName
-    playerName = get_players_names()
+    
+    player_name = get_players_names()
     run_game(questions)
-    data = [playerName, score]
+    data = [player_name, score]
     results_info = [str(elem) for elem in data]
     update_names_worksheet(results_info)
-    thank_player()
+    thank_player(player_name)
+
 
 main()
-
-
 
