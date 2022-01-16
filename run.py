@@ -21,7 +21,10 @@ SHEET = GSPREAD_CLIENT.open('Quiz Lord Of The Rings')
 def get_players_names():
     """
     This function will ask for the player`s
-    name
+    name. If you type numbers, raise value
+    error will happen, and you can try again.
+    If the name is longer then 20 letters,
+    raise valueerror will happen.
     """
     while True:
         name = input("Enter your name:\n")
