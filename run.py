@@ -79,7 +79,7 @@ game_quiz = [
     "Who released King Theoden from the spell of Saruman?\n(a) Elves\n(b)"
     " Gandalf\n(c) Frodo\n\n",
     "Name Sauron's fortress in Mordor\n(a) Barad-dûr\n(b) Barad-kar\n(c)"
-    "Barad-mov\n\n",
+    " Barad-mov\n\n",
     "What was the riddle that Gandalf could not figure out to open the door?"
     "\n(a) speak in tongues\n(b) speak wise and enter\n"
     "(c) speak friend and enter\n\n",
@@ -92,8 +92,8 @@ game_quiz = [
     "Who did Sam eventually marry?\n(a) Rosie Cotton\n(b) Sally Rose\n(c)"
     " Mary Cotton\n\n",
     "What is Bilbo's relation to Frodo?\n(a)"
-    "  Frodo is Bilbo's second cousin\n"
-    "(b)  Frodo is Bilbo's third cousin\n(c)  "
+    " Frodo is Bilbo's second cousin\n"
+    "(b) Frodo is Bilbo's third cousin\n(c) "
     "Frodo is Bilbo's fourth cousin\n\n",
 
 
@@ -161,10 +161,10 @@ def thank_player():
     also display all the
     players score
     """
-    print("Thank you", PLAYER_NAME, "you got:", SCORE, "points")
+    print("Thank you", PLAYER_NAME, "your score is:", SCORE,)
     show = SHEET.worksheet("results")
     show_all = show.get_all_values()
-    print("This is the scorelist of all players")
+    print("This is the scorelist of all the players")
     for row in show_all:
         print(row)
 
