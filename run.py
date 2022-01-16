@@ -6,7 +6,7 @@ APi and google drive API
 import gspread
 from google.oauth2.service_account import Credentials
 import random
- 
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -57,16 +57,16 @@ def update_names_worksheet(data):
     update_names.append_row(data)
 
 
-"""
-I got inspired after watching a video,
-where somebody made a quiz using a
-class in python. I used this idea.
-The link will take you to the youtube
-video:https://youtu.be/SgQhwtIoQ7o
-"""
-
-
 class Game:
+    """
+    I got inspired after watching a video,
+    where somebody made a quiz using a
+    class in python. I used the start
+    of his idea.
+    The link will take you to the youtube
+    video:https://youtu.be/SgQhwtIoQ7o
+    """
+    
     def __init__(self, grill, answer):
         self.grill = grill
         self.answer = answer
@@ -112,7 +112,7 @@ questions = [
 ]
 
 
-def run_game(questions):
+def run_game(self):
     """
     This function will run the quiz.
     It will raise a valueerror if a,
@@ -122,8 +122,7 @@ def run_game(questions):
     are correct.
     """
     for question in questions:
-        random.shuffle(questions)
-        
+        random.shuffle(questions)      
         while True:
             response = input(question.grill)
             try:
@@ -158,10 +157,8 @@ def thank_player(player_name):
     for row in show:
         print("This is the scorelist of all players")
         print(row)
-        
-        
+       
 
-   
 def main():
     """
     This is the main function and it
