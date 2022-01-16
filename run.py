@@ -66,7 +66,6 @@ class Game:
     The link will take you to the youtube
     video:https://youtu.be/SgQhwtIoQ7o
     """
-    
     def __init__(self, grill, answer):
         self.grill = grill
         self.answer = answer
@@ -112,7 +111,7 @@ questions = [
 ]
 
 
-def run_game(self):
+def run_game():
     """
     This function will run the quiz.
     It will raise a valueerror if a,
@@ -122,7 +121,7 @@ def run_game(self):
     are correct.
     """
     for question in questions:
-        random.shuffle(questions)      
+        random.shuffle(questions)     
         while True:
             response = input(question.grill)
             try:
@@ -151,11 +150,12 @@ def update_score():
     return score
 
 
-def thank_player(player_name):
-    show = SHEET.worksheet("results").get_all_values()
+def thank_player():
     print("Thank you", player_name, "you got:", score, "points")
-    for row in show:
-        print("This is the scorelist of all players")
+    show = SHEET.worksheet("results")
+    show_all = show.get_all_values()
+    print("This is the scorelist of all players")
+    for row in show_all:
         print(row)
        
 
@@ -169,13 +169,13 @@ def main():
     print("*    LORD OF THE RINGS QUIZ    *")
     print("*                              *")
     print("********************************\n")
-    
+    global player_name
     player_name = get_players_names()
-    run_game(questions)
+    run_game()
     data = [player_name, score]
     results_info = [str(elem) for elem in data]
     update_names_worksheet(results_info)
-    thank_player(player_name)
+    thank_player()
 
 
 main()
