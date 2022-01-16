@@ -27,28 +27,21 @@ def get_players_names():
     raise valueerror will happen.
     """
     while True:
+        print("Welcome!\n")
         name = input("Enter your name:\n")
         try:
             if name.isdigit() == True:
                 raise ValueError(f"No numbers permitted, you wrote: {name}")
             elif len(name) >= 20:
                 raise ValueError(f"Your name was over 20 caracters: {name}")
-        
-
+            elif name == "":
+                raise ValueError("You left name empty")
+               
             else: break
         except ValueError as e:
             print(f"Invalid data:{e}, please try again.\n")
     return name
-    """
-    while True:
-        enter_name = input("Enter your name:\n")
-        results_info = enter_name.split(",")
-        if validate_name(results_info):
-            print("successful")
-            break
-
-    return results_info
-    """
+  
         
 def update_names_worksheet(data):
     """
@@ -60,12 +53,14 @@ def update_names_worksheet(data):
     print("updating")
     update_names = SHEET.worksheet("results")
     update_names.append_row(data)
-    print("funker")
+    
 
 """
-I got inspired after watching a video where somebody made a quiz
-by using a class in python. I borrowed some of his ideas
- https://youtu.be/SgQhwtIoQ7o
+I got inspired after watching a video,
+  where somebody made a quiz using a 
+  class in python. I used this idea.
+  The link will take you to the youtube
+  video:https://youtu.be/SgQhwtIoQ7o
 """
 
 class Game:
@@ -75,7 +70,7 @@ class Game:
 
 
 game_quiz = [
-    "Who is Frodo`s loyal friend that walked with him to Mount doom?\n(a) Gandalf\n(b) Samwise Gamgee\n(c) Aragorn\n\n",
+    "\nWho is Frodo`s loyal friend that walked with him to Mount doom?\n(a) Gandalf\n(b) Samwise Gamgee\n(c) Aragorn\n\n",
     "How many rings were made for the elves?\n(a) 2\n(b) 4\n(c) 3\n\n",
     ]
 questions = [
@@ -85,28 +80,23 @@ questions = [
 
 def run_game(questions):
     """
-    This function will run the quiz
-    It will also validate the correct
-    input. It will raise valueerror
-    if a, b, or c is not clicked on.
-    It will ask the question
-    again with because of the while true.
-    It also checks if the answer is correct.
+    This function will run the quiz.
+    It will raise a valueerror if 
+    a, b, or c is not clicked.
+    Then you can try again by using
+    while True. It also checks if the answers
+    are correct.
     """
     for question in questions:
         while True:
             response = input(question.grill)
             try:
                 if response not in ("a", "b", "c"):
-                    raise ValueError(f"only a, b or c permitted, you wrote{response}")
+                    raise ValueError(f"only a, b or c permitted, you wrote:{response}")
                 elif response == question.answer:
                     update_score()
-                    print(score)
-                    print("hurra")
                     break
                 else:
-                    print("Feil svar")
-                    print(score)
                     break
             except ValueError as e:
                 print(f"Invalid data: {e}, please try again.\n")
@@ -115,35 +105,16 @@ def run_game(questions):
 score = 0
 def update_score():
     """
-    This function will increminent
-    the score by 1 if the answer
-    is correct
+    This function will increment
+    the score by 1
     """
     global score
     score += 1
-    print("score er:", score)
     return score
 
 
-def update_score_worksheet(score):
-    """
-    This function will store the players
-    score in the spreadsheet column 2
-    """
-    total = [str(score)]
-    update_points = SHEET.worksheet("results")
-    update_points.append_row(total)
-
-    return total
-    
-    
-def showing_spreadsheet(total, sesults_info):
-    show = SHEET.worksheet("results").get_all_values()
-    print(f"{results_info} Thank you for playing the Lord Of The Rings quiz. Your score is: {total}")
-    print(show)
-   
 def thank_player():
-    print("Thanbk you", playerName, "for taking the quz, you got:", score,"points")
+    print("Thank you", playerName, "for taking the quiz, you got:", score, "points")
     print("This is the scorelist of all players:")
     show = SHEET.worksheet("results").get_all_values()
     for row in show:
@@ -159,22 +130,14 @@ def main():
     print("*    LORD OF THE RINGS QUIZ    *")
     print("*                              *")
     print("********************************\n")
-    """data = get_players_names()"""
+    
     global playerName
     playerName = get_players_names()
-    
-  
     run_game(questions)
     data = [playerName, score]
     results_info = [str(elem) for elem in data]
     update_names_worksheet(results_info)
     thank_player()
-    """
-    total = update_score_worksheet(score)
-    showing_spreadshets(total, results info)
-    """
+ 
     
-    
-
-
 main()
