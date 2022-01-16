@@ -72,10 +72,32 @@ class Game:
 game_quiz = [
     "\nWho is Frodo`s loyal friend that walked with him to Mount doom?\n(a) Gandalf\n(b) Samwise Gamgee\n(c) Aragorn\n\n",
     "How many rings were made for the elves?\n(a) 2\n(b) 4\n(c) 3\n\n",
+    "Who released King Theoden from the spell of Saruman?\n(a) Elves\n(b) Gandalf\n(c) Frodo\n\n",
+    "Name Sauron's fortress in Mordor\n(a) Barad-dûr\n(b) Barad-kar\n(c) Barad-mov\n\n",
+    "What was the riddle that Gandalf could not figure out to open the door?\n(a) speak in tongues\n(b) speak wise and enter\n"
+    "(c) speak friend and enter\n\n",
+    " What are the names of the two towers?\n(a) Minas Tirith and Minas Morgul\n(b) Minas Tirith and Minas Morkul"
+    "\n(c) Minas Trith and Minas Morgul\n\n",
+    "Name Lady of Caras Galadhon.\n(a) Lady love\n(b) Lady of Caras Galadhon.\n(c) Lady of sath Toth\n\n",
+    "Who is Isildur's heir?\n(a) Legolas\n(b) Boromir\n(c) Aragorn\n\n",
+    "Who did Sam eventually marry?\n(a) Rosie Cotton\n(b) Sally Rose\n(c) Mary Cotton\n\n",
+    "What is Bilbo's relation to Frodo?\na(a)  Frodo is Bilbo's second cousin\n"
+    "(b)  Frodo is Bilbo's third cousin\n(c)  Frodo is Bilbo's fourth cousin\n\n",
+
+
     ]
 questions = [
     Game(game_quiz[0],"b"),
     Game(game_quiz[1],"c"),
+    Game(game_quiz[2],"b"),
+    Game(game_quiz[3],"a"),
+    Game(game_quiz[4],"c"),
+    Game(game_quiz[5],"a"),
+    Game(game_quiz[6],"b"),
+    Game(game_quiz[7],"c"),
+    Game(game_quiz[8],"a"),
+    Game(game_quiz[9],"a"),
+
 ]
 
 def run_game(questions):
