@@ -27,6 +27,16 @@ def get_players_names():
     Love sandwitch project with samll changes.
     """
     while True:
+        name = input("Enter your name:\n")
+        try:
+            if name.isdigit() == True:
+                raise ValueError(f"No numbers permitted")
+            else: break
+        except ValueError as e:
+            print(f"Invalid data: {e}, please try again.\n")
+    return name
+    """
+    while True:
         enter_name = input("Enter your name:\n")
         results_info = enter_name.split(",")
         if validate_name(results_info):
@@ -34,6 +44,7 @@ def get_players_names():
             break
 
     return results_info
+    """
         
 
 def validate_name(values):
@@ -68,7 +79,7 @@ def update_names_worksheet(data):
 
 """
 I got inspired after watching a video where somebody made a quiz
-by using class in python. I borrowed some of his ideas
+by using a class in python. I borrowed some of his ideas
  https://youtu.be/SgQhwtIoQ7o
 """
 
@@ -90,7 +101,7 @@ questions = [
 def run_game(questions):
     """
     This function will run the quiz
-    is will also validate the correct
+    It will also validate the correct
     input. It will raise valueerror
     if a, b, or c is not clicked on.
     It will ask the question
@@ -125,6 +136,7 @@ def update_score():
     """
     global score
     score += 1
+    print("score er:", score)
     return score
 
 
@@ -134,20 +146,23 @@ def update_score_worksheet(score):
     score in the spreadsheet column 2
     """
     total = [str(score)]
-    update_points = SHEET.worksheet("results").col_values(2)
+    update_points = SHEET.worksheet("results")
     update_points.append_row(total)
-    update_names.append_row(data)
-    print(column)
+
+    return total
     
-
-
-def showing_spreadsheet():
+    
+def showing_spreadsheet(total, sesults_info):
     show = SHEET.worksheet("results").get_all_values()
     print(f"{results_info} Thank you for playing the Lord Of The Rings quiz. Your score is: {total}")
     print(show)
    
-
-
+def thank_player():
+    print("Thanbk you", playerName, "for taking the quz, you got:", score,"points")
+    print("This is the scorelist of all players:")
+    show = SHEET.worksheet("results").get_all_values()
+    for row in show:
+        print(row)
 
 def main():
     """
@@ -159,15 +174,22 @@ def main():
     print("*    LORD OF THE RINGS QUIZ    *")
     print("*                              *")
     print("********************************\n")
-    data = get_players_names()
+    """data = get_players_names()"""
+    global playerName
+    playerName = get_players_names()
+    
+  
+    run_game(questions)
+    data = [playerName, score]
     results_info = [str(elem) for elem in data]
     update_names_worksheet(results_info)
-    print(type(results_info))
-    print(results_info)
-    run_game(questions)
-    update_score()
+    thank_player()
+    """
+    total = update_score_worksheet(score)
+    showing_spreadshets(total, results info)
+    """
     
-    showing_spreadsheet()
+    
 
 
 main()
