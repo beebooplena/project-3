@@ -21,19 +21,20 @@ SHEET = GSPREAD_CLIENT.open('Quiz Lord Of The Rings')
 def get_players_names():
     """
     This function will ask for the player`s
-    name and store it in a list. The name
-    will be validated in another function
-    This code is borrowed from the
-    Love sandwitch project with samll changes.
+    name
     """
     while True:
         name = input("Enter your name:\n")
         try:
             if name.isdigit() == True:
-                raise ValueError(f"No numbers permitted")
+                raise ValueError(f"No numbers permitted, you wrote: {name}")
+            elif len(name) >= 20:
+                raise ValueError(f"Your name was over 20 caracters: {name}")
+        
+
             else: break
         except ValueError as e:
-            print(f"Invalid data: {e}, please try again.\n")
+            print(f"Invalid data:{e}, please try again.\n")
     return name
     """
     while True:
@@ -46,25 +47,6 @@ def get_players_names():
     return results_info
     """
         
-
-def validate_name(values):
-    """
-    This function will raise valueerror if
-    there are written more names then one.
-    Then it will ask again for your name.
-    This code is borrowed from Love Sandwitch
-    project, with small changes.
-    """
-    try:
-        if len(values) != 1:
-            raise ValueError(f"only one value is permitted, you wrote{len(values)}")
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
-        return False
-
-    return True
-
-
 def update_names_worksheet(data):
     """
     This function will store the names
