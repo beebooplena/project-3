@@ -3,9 +3,9 @@ gspread is imported to get access to the spreadsheet
 APi and google drive API
 
 """
+import random
 import gspread
 from google.oauth2.service_account import Credentials
-import random
 
 
 SCOPE = [
@@ -18,6 +18,7 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Quiz Lord Of The Rings')
+PLAYER_NAME = ""
 
 
 def get_players_names():
@@ -117,11 +118,13 @@ def run_game():
     It will raise a valueerror if a,
     b, or c is not clicked.Then you
     can try again by using
-    while True. It also checks if the answers
+    while True. The questions are
+    shuffled. The function will also
+    checks if the answers
     are correct.
     """
     for question in questions:
-        random.shuffle(questions)     
+        random.shuffle(questions)
         while True:
             response = input(question.grill)
             try:
@@ -133,11 +136,11 @@ def run_game():
                     break
                 else:
                     break
-            except ValueError as e:
-                print(f"Invalid data: {e}, please try again.\n")
+            except ValueError as error:
+                print(f"Invalid data: {error}, please try again.\n")
 
 
-score = 0
+SCORE = 0
 
 
 def update_score():
@@ -145,19 +148,26 @@ def update_score():
     This function will increment
     the score by 1
     """
-    global score
-    score += 1
-    return score
+    global SCORE
+    SCORE += 1
+    return SCORE
 
 
 def thank_player():
-    print("Thank you", player_name, "you got:", score, "points")
+    """
+    This function will print the
+    name of the player and the
+    player's score. It will
+    also display all the
+    players score
+    """
+    print("Thank you", PLAYER_NAME, "you got:", SCORE, "points")
     show = SHEET.worksheet("results")
     show_all = show.get_all_values()
     print("This is the scorelist of all players")
     for row in show_all:
         print(row)
-       
+
 
 def main():
     """
@@ -169,14 +179,13 @@ def main():
     print("*    LORD OF THE RINGS QUIZ    *")
     print("*                              *")
     print("********************************\n")
-    global player_name
+    global PLAYER_NAME
     player_name = get_players_names()
     run_game()
-    data = [player_name, score]
+    data = [player_name, SCORE]
     results_info = [str(elem) for elem in data]
     update_names_worksheet(results_info)
     thank_player()
 
 
 main()
-
