@@ -2,7 +2,7 @@
 
 # Welcome To The Lord of The Rings Mock Terminal Python Quiz
 
-This quiz will check the players knowledge about the lord of the rings triology. It contains ten questions that are randomed shuffled each time the user are playing. It can be a nice quiz to be used with friends or be used as a fun activity, that can be done with colleges. The quiz master can use the spreadsheet to get an overview of the players names and scores.
+This quiz will check the players knowledge about the lord of the rings triology. It contains ten questions that are randomed shuffled each time a user is playing. It can be a nice quiz to be used with friends or be used as a fun activity, that can be done with colleges. The quiz master/ owner can use the spreadsheet, to get an overview of the players names and scores.
 
 Visit the quiz game here: https://lord-of-the-ringsquiz.herokuapp.com/
 
@@ -14,7 +14,7 @@ Visit the quiz game here: https://lord-of-the-ringsquiz.herokuapp.com/
 * The player will be asked one question at a time, and the player needs to choose answer alternatives a, b or c.
 * After the questions are answered, the player will get an overview of his/her score.
 * The player will also get an overview of the other players scores.
-* The players name and score will be updated in a spreadsheet.
+* The players names and scores will be updated in a spreadsheet.
 
 ![start](assets/screenshots/start-screen.png)
 
@@ -30,18 +30,18 @@ then be able to evaluate the players.
 * The user wants to see the score.
 * The user wants to see other players score.
 
-
+<br>
 
 
 ### Lucid chart program overview
 I used Lucid chart program to make a flowchart to get an overview of how the quiz program works. It is a nice way to get an practical overview of the program. As displayed here, the steps goes like this:
 
 *  The program starts, and ask the player for his or her name.
-*  If the player writes in numbers or more then 20 caracters long, or just type enter, an valueerror arise and the player must try again to write the name.
+*  If the player writes in numbers or more then 20 caracters long, or just type enter, a valueerror will arise. The player must try again to write the name.
 
 * When the name is valid, the quiz starts and the player receives the first question. 
 
-* To answer, the player needs to type a, b or c. If the player types numbers, other letters or empty, an valueerror will arise, and the player must try again.
+* To answer, the player needs to type a, b or c. If the player types numbers, other letters or empty, a valueerror will arise, and the player must try again.
 
 * If the answer is valid, the next question will happen.
 
@@ -55,7 +55,7 @@ I used Lucid chart program to make a flowchart to get an overview of how the qui
 
 
 ## Features
-The questions will be in different order each time a player plays the quiz. This makes the quiz a bit more difficult.
+The questions are in different order each time a player plays the quiz. This makes the quiz a bit more difficult.
 
 <br>
 
@@ -117,9 +117,9 @@ The quiz is a commandline based python program, where I also included a class. T
 * First I checked if the name input worked. I checked in the local terminal and then in the Code Institute Heroku terminal. I typed in a number and an valuerror occurred.
 I tried again, now just pushing enter. A new valueerror occurred. I tried again and wrote more then 20 caracters and a new valueerror occurred. The valueerrors works with the name input. Lastly I wrote a name and it worked.
 
-*  Secondely I checked if the quiz is working. I checked this first in the local terminal and then in the Code Institute Heroku terminal. First I check if the questions are randomely shuffled, and it does. I then check if I type another letter then a, b or c. I test different letters and numbers as answers and a valueerror occurs correctly.
+*  Secondly I checked if the quiz is working. I checked first in the local terminal and then in the Code Institute Heroku terminal. First I checked if the questions are randomely shuffled, and it does. I then check if the valueerror is working by typing different letters then a, b or c. I test different letters and numbers as answers and a valueerror occurs correctly.
 
-* I check if the right name and if the score is displayed correctly at the end at the overview. I also check if the spreadsheet is updating correctly and it does.
+* I check if the right name and if the score is displayed correctly at the end of the program. I also check if the spreadsheet is updating correctly and it does.
 
 
 ### Validator tester
@@ -133,9 +133,9 @@ The local terminal is displaying a problem because I use global statement.
 
 
 ## Bugs
-* I had a bug with the increment score function where the local terminal printed the score but in the spreadsheet the score was 1 point more then the score. After a while, I found out that the function was called two times. After deleting that function, it worked correctly.
+* I had a bug in the increment score function, where the local terminal printed the correct score, but in the spreadsheet the score was 1 point more then the score. After a while, I found out that the function was called twice. After deleting the second call, it worked correctly.
 
-* I had a bug in a using while true loop. I used it to arise valuerror. I made an infinite loop many times, and found out that the if statement boolean was true, even if I included it to return false. Because of this, an infinite loop happened. I deleted return false and used an else statement with a break. The bug was finally gone.
+* I had a bug when I used a while true loop. I used it to arise valuerror. I made an infinite loop many times, and found out that the if statement boolean was true, even if I included it to return false. Because of this, an infinite loop happened. I deleted return false and used an else statement with a break. The bug was finally gone.
 
 
 ### Unfixed Bugs
@@ -174,7 +174,7 @@ Then scroll up and find the deploy button. Select Github and click "connect to G
 
 * I would like to thank the tutor support of code institute for supporting me.
 
-* I would like to thank the slack community for help.
+* I would like to thank the slack community.
 
 ## Content
 * I got inspired by Love sandwitch project and used the idea of using a spreadsheet. I used the same code to connect the API to the spreadsheet and google drive
