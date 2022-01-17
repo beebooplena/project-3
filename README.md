@@ -54,42 +54,65 @@ I used Lucid chart program to make an overview of how the quiz program works. It
 ![Lucid chart](assets/screenshots/lucidchart.png)
 
 
-
-## Design
-### font
-
-
-### Colours
-
-
-### Images
-
-
-### Icones
-
 ## Features
+The questions will be in different order each time a player plays the quiz. This makes the quiz a bit more difficult.
 
-### Logo
+<br>
+
+![quiz-screen](assets/screenshots/quiz-screen.png)
+
+<br>
+
+The terminal will raise valueerrors if the player writes the name in numbers, or if the name is longer then 20 caracters and if the name is empty.
+
+<br>
 
 
-### Landing page
+![number-error](assets/screenshots/number-valueerror.png)
+<br>
 
+![empty-error](assets/screenshots/invalid-data-empty.png)
 
-### Results
+<br>
+
+![name is to long](assets/screenshots/invalid-data-to-long.png)
+
+The player name and score is displayed after the quiz is finished. The player also receives an overview of other players that has played the quiz.
+
+<br>
+
+![score](assets/screenshots/showing-score.png)
+
+<br>
+
+Another feature is that the names and scores are updated to a spreadsheet. A quizmaster/ owner can evaluate the players score. The owner can delete the players scores and names in the spreadsheet.
+
+![sheet](assets/screenshots/spreadsheet.png)
+
 
 ### Future Features
+* Include a highscore record of the players.
+* Make the quiz more exciting by developing the usage of the class and adding more exciting ways to answer questions.
+
 
 ### Technology
-I used different technologies and languages to make this game and webpage.
-
+I used different technologies and languages to make this python quiz. Here are some of the languages and technologies:
+* Lucid chart
 * VS-code
 * Git Hub
-
-
-### Language
+* Python
+* Heroku
+* Node.js
+* google spreadsheet
+* Google spreadsheet API
+* Google drive API
+* PEP8 online
+* Am I responsive? website
+* import random
 
 
 ## Testing
+I 
 
 ### Game and buttons
 
