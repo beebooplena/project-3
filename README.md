@@ -34,7 +34,7 @@ then be able to evaluate the players.
 
 
 ### Lucid chart program overview
-I used Lucid chart program to make an overview of how the quiz program works. It is a nice way to get an practical overview of the program. As displayed here, the steps goes like this:
+I used Lucid chart program to make a flowchart to get an overview of how the quiz program works. It is a nice way to get an practical overview of the program. As displayed here, the steps goes like this:
 
 *  The program starts, and ask the player for his or her name.
 *  If the player writes in numbers or more then 20 caracters long, or just type enter, an valueerror arise and the player must try again to write the name.
@@ -145,39 +145,76 @@ The local terminal is displaying a problem because I use global statement.
 1. In your local terminal write:
 pip3 freeze > requirements.txt
 Save and push.
+
 2. Go into the webpage Heroku.com and create an account.
+
 3. In the dashboard in Heroku, click on the "create new app".
+
 4. Give your app a unique name and choose your region. Now click on "create app"
+
 5. First go to setting tab and find Config Vars. Click on the "Reveal Config Vars".
-5. If you use creds.json file then write CREDS in the field of KEY and in the field Value, you copy all your creds.json content and paste it inside the value field. Click "add". If you don`t use creds,json file in your project, you can skip this step.
-6. Next step is to include PORT in the KEY field and enter 8000 in the value field. Remember to use capital letters. Click "add".
-7. Below you will find Buildpacks and click "add buildpack". First click python and save. Add abother buildpack and choose Nodejs and click "save changes". It is important that python is displayed first and Nodejs under..
-8. Then scroll up and find the deploy button. Select Github and click "connect to GitHub".
-9. Enter your repository name and click "search".
-10. Below, click on "Deploy Branch"button.
-11. Heroku will let you know if the app was successfully deployed.
-12. Now you can view your app by clicking on the button below the notification.
-13. You can also choose if the app will rebuild automatically when you do changes and push the code. If you will enable, click "Enable automatic Deploys".
+
+6. If you use creds.json file then write CREDS in the field of KEY and in the field Value, you copy all your creds.json content and paste it inside the value field. Click "add". If you don`t use creds,json file in your project, you can skip this step.
+
+7. Next step is to include PORT in the KEY field and enter 8000 in the value field. Remember to use capital letters. Click "add".
+
+8. Below you will find Buildpacks and click "add buildpack". First click python and save. Add abother buildpack and choose Nodejs and click "save changes". It is important that python is displayed first and Nodejs under..9. 
+Then scroll up and find the deploy button. Select Github and click "connect to GitHub".
+
+10. Enter your repository name and click "search".
+11. Below, click on "Deploy Branch"button.
+12. Heroku will let you know if the app was successfully deployed.
+13. Now you can view your app by clicking on the button below the notification.
+14. You can also choose if the app will rebuild automatically when you do changes and push the code. If you will enable, click "Enable automatic Deploys".
 
 
 ## Credits 
 
-* I would like to thank my mentor Dick Vlaanderen for guiding me.
-
-
+* I would like to thank my mentor Dick Vlaanderen for his guidance.
 
 * I would like to thank the tutor support of code institute for supporting me.
 
 * I would like to thank the slack community for help.
 
-
-
-
-
 ## Content
+* I got inspired by Love sandwitch project and used the idea of using a spreadsheet. I used the same code to connect the API to the spreadsheet and google drive
+Here is the originally code from Love Sandwitch project:
+
+<br>
+import gspread
+from google.oauth2.service_account import Credentials
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('love_sandwiches')
+
+<br>
+
+* I also got inspired from Love Sandwitch project and also borrowed the function for updating spreadsheet. Here is the originally code:
+
+def update_sales_worksheet(data):
+    """
+    Update sales worksheet, add new row with the list data provided
+    """
+    print("Updating sales worksheet...\n")
+    sales_worksheet = SHEET.worksheet("sales")
+    sales_worksheet.append_row(data)
+    print("Sales worksheet updated successfully.\n")
+
+
+* I got inspired after watching a video about how you can use class to make a quiz. I used his idea, using a class but without making a function below it with self passed into it. Here is a url link to the video:
+https://youtu.be/SgQhwtIoQ7o
 
 
 
 
 
-### Media
+
+
