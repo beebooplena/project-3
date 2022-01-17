@@ -160,7 +160,7 @@ def thank_player():
     also display all the
     players score
     """
-    print("Thank you", player_name, "your score is:", SCORE,)
+    print("Thank you,", player_name, ":)", "Your score is:", SCORE,)
     show = SHEET.worksheet("results")
     show_all = show.get_all_values()
     print("This is the scorelist of all the players")
