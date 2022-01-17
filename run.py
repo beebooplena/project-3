@@ -18,7 +18,6 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Quiz Lord Of The Rings')
-PLAYER_NAME = ""
 
 
 def get_players_names():
@@ -161,7 +160,7 @@ def thank_player():
     also display all the
     players score
     """
-    print("Thank you", PLAYER_NAME, "your score is:", SCORE,)
+    print("Thank you", player_name, "your score is:", SCORE,)
     show = SHEET.worksheet("results")
     show_all = show.get_all_values()
     print("This is the scorelist of all the players")
@@ -179,7 +178,7 @@ def main():
     print("*    LORD OF THE RINGS QUIZ    *")
     print("*                              *")
     print("********************************\n")
-    global PLAYER_NAME
+    global player_name
     player_name = get_players_names()
     run_game()
     data = [player_name, SCORE]
