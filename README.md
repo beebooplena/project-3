@@ -116,31 +116,48 @@ The quiz is a commandline based python program, where I also included a class. T
 ## Testing
 * First I checked if the name input worked. I checked in the local terminal and then in the Code Institute Heroku terminal. I typed in a number and an valuerror occurred.
 I tried again, now just pushing enter. A new valueerror occurred. I tried again and wrote more then 20 caracters and a new valueerror occurred. The valueerrors works with the name input. Lastly I wrote a name and it worked.
+
 *  Secondely I checked if the quiz is working. I checked this first in the local terminal and then in the Code Institute Heroku terminal. First I check if the questions are randomely shuffled, and it does. I then check if I type another letter then a, b or c. I test different letters and numbers as answers and a valueerror occurs correctly.
+
 * I check if the right name and if the score is displayed correctly at the end at the overview. I also check if the spreadsheet is updating correctly and it does.
 
 
-### Game and buttons
-
-
-
 ### Validator tester
+I passed the code in the PEP8 linter and it displayed no problems.
 
+<br>
 
+![PEP8](assets/screenshots/pep8.png)
 
-
-
-
+The local terminal is displaying a problem because I use global statement.
 
 
 ## Bugs
+* I had a bug with the increment score function where the local terminal printed the score but in the spreadsheet the score was 1 point more then the score. After a while, I found out that the function was called two times. After deleting that function, it worked correctly.
 
+* I had a bug in a using while true loop. I used it to arise valuerror. I made an infinite loop many times, and found out that the if statement boolean was true, even if I included it to return false. Because of this, an infinite loop happened. I deleted return false and used an else statement with a break. The bug was finally gone.
 
 
 ### Unfixed Bugs
+  I see that using global statements are considered as bad practise. I see that this is something I must try to avoid using in the future. I tried to figure out how to solve the problem about "Global variable 'player_name' undefined at the module level" and "Constant name "player_name" doesn't conform to UPPER_CASE naming style". In the future I will avoid using globe at my very best.
 
 ## Deployment
-
+1. In your local terminal write:
+pip3 freeze > requirements.txt
+Save and push.
+2. Go into the webpage Heroku.com and create an account.
+3. In the dashboard in Heroku, click on the "create new app".
+4. Give your app a unique name and choose your region. Now click on "create app"
+5. First go to setting tab and find Config Vars. Click on the "Reveal Config Vars".
+5. If you use creds.json file then write CREDS in the field of KEY and in the field Value, you copy all your creds.json content and paste it inside the value field. Click "add". If you don`t use creds,json file in your project, you can skip this step.
+6. Next step is to include PORT in the KEY field and enter 8000 in the value field. Remember to use capital letters. Click "add".
+7. Below you will find Buildpacks and click "add buildpack". First click python and save. Add abother buildpack and choose Nodejs and click "save changes". It is important that python is displayed first and Nodejs under..
+8. Then scroll up and find the deploy button. Select Github and click "connect to GitHub".
+9. Enter your repository name and click "search".
+10. Below, click on "Deploy Branch"button.
+11. Heroku will let you know if the app was successfully deployed.
+12. Now you can view your app by clicking on the button below the notification.
+13. You can also choose if the app will rebuild automatically when you do changes and push the code. If you will enable, click "Enable automatic Deploys".
 
 
 ## Credits 
