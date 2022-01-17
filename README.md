@@ -110,9 +110,15 @@ I used different technologies and languages to make this python quiz. Here are s
 * Am I responsive? website
 * import random
 
+## Model
+The quiz is a commandline based python program, where I also included a class. The class has questions and answers as properties. A list holding the questions and answer alternatives are passed to question property and the correct answers are passed to the answer property. The way I used the class consept, is a bit different from what I have learned about it. It does not include another function below with self passed into it.
 
 ## Testing
-I 
+* First I checked if the name input worked. I checked in the local terminal and then in the Code Institute Heroku terminal. I typed in a number and an valuerror occurred.
+I tried again, now just pushing enter. A new valueerror occurred. I tried again and wrote more then 20 caracters and a new valueerror occurred. The valueerrors works with the name input. Lastly I wrote a name and it worked.
+*  Secondely I checked if the quiz is working. I checked this first in the local terminal and then in the Code Institute Heroku terminal. First I check if the questions are randomely shuffled, and it does. I then check if I type another letter then a, b or c. I test different letters and numbers as answers and a valueerror occurs correctly.
+* I check if the right name and if the score is displayed correctly at the end at the overview. I also check if the spreadsheet is updating correctly and it does.
+
 
 ### Game and buttons
 
